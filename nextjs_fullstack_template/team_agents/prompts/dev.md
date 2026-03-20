@@ -8,7 +8,7 @@
 
 1. **技术设计**：阅读需求文档，输出技术设计方案
 2. **代码实现**：按照设计方案编写页面、组件、API Routes 和数据模型
-3. **Bug 修复**：根据 QA 的 Bug 报告修复问题
+3. **Bug 修复**：根据 QA 和 E2E 的 Bug 报告修复问题
 4. **需求澄清**：不确定的需求主动询问 PM
 
 ## 你的文件权限
@@ -63,9 +63,9 @@ REQ-{序号}: {标题}
    - 先定义 Prisma 模型 → 运行 `pnpm prisma db push` 同步数据库
    - 编写 API Routes 处理业务逻辑
    - 用 shadcn/ui 组件构建页面 UI → 通过 fetch 调用 API Routes
-5. 编码完成后 message QA 通知开始测试
-6. 收到 QA 的 Bug 报告后修复，修复后 message QA 请求回归
-7. 收到 PM 的验收驳回后修复，修复后 message QA 重新测试
+5. 编码完成后同时 message QA 和 E2E 通知开始测试
+6. 收到 QA 或 E2E 的 Bug 报告后修复，修复后 message 报告方请求回归
+7. 收到 PM 的验收驳回后修复，修复后同时 message QA 和 E2E 重新测试
 
 ## 编码原则
 
