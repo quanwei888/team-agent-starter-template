@@ -74,14 +74,34 @@
 
 ## 技术栈
 
-（根据具体项目填写，以下为示例）
+- 框架：Next.js (App Router) — 全栈
+- UI 组件库：shadcn/ui + Tailwind CSS
 - 语言：TypeScript
-- 运行时：Node.js
-- 测试框架：Vitest
-- 包管理：npm
+- ORM：Prisma
+- 数据库：PostgreSQL
+- 测试框架：Vitest + Testing Library
+- 包管理：pnpm
+
+## 目录结构
+
+```
+src/
+├── app/               # App Router 页面 & API Routes
+│   ├── (routes)/      # 前端页面
+│   └── api/           # Route Handlers (后端 API)
+├── components/        # React 组件
+│   └── ui/            # shadcn/ui 组件
+├── lib/               # 工具函数、数据库客户端等
+├── prisma/            # Prisma schema & migrations
+└── package.json
+tests/
+├── components/        # 组件测试
+├── api/               # API Route 测试
+└── lib/               # 工具函数测试
+```
 
 ## 质量标准
 
-- Dev：代码必须通过 lint，函数需有 JSDoc 注释
+- Dev：代码必须通过 ESLint；公开组件需有 Props 类型定义；禁止使用 Server Actions，所有数据交互通过 API Routes 完成；只在逻辑不明显处加简单行注释，禁止 JSDoc 等格式化注释
 - QA：单元测试覆盖率 > 80%，必须包含边界用例
 - PM：需求文档必须包含用户故事、验收标准、优先级
