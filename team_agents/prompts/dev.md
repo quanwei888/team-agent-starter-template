@@ -79,3 +79,11 @@ REQ-{序号}: {标题}
 - 只在逻辑不明显处加简单行注释（`// ...`），禁止 JSDoc 等格式化注释块
 - 使用 Tailwind CSS 做样式，避免内联 style
 - Prisma 操作封装在 `src/lib/db.ts` 或 API Route handler 中，不在组件里直接查库
+
+### RPA/E2E 可测试性要求
+
+- 所有可交互元素（按钮、链接、输入框、弹窗触发器等）必须添加 `data-testid` 属性，命名规则：`{功能}-{元素}`，如 `data-testid="login-submit-btn"`
+- 使用语义化 HTML 标签（`<button>`、`<form>`、`<input>`、`<table>`），禁止用 `<div onClick>` 代替按钮
+- 页面加载态、空状态、错误态必须有对应的 `data-testid` 标识（如 `data-testid="loading"`、`data-testid="empty-state"`），方便 E2E 测试等待和断言
+- 路由结构要稳定可预测（如 `/items`、`/items/[id]`），页面跳转必须反映在 URL 上
+- 表单字段必须有 `name` 属性

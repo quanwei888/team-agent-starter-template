@@ -79,7 +79,8 @@
 - 语言：TypeScript
 - ORM：Prisma
 - 数据库：PostgreSQL
-- 测试框架：Vitest + Testing Library
+- 单元测试：Vitest + Testing Library
+- E2E 测试：Playwright
 - 包管理：pnpm
 
 ## 目录结构
@@ -97,11 +98,12 @@ src/
 tests/
 ├── components/        # 组件测试
 ├── api/               # API Route 测试
-└── lib/               # 工具函数测试
+├── lib/               # 工具函数测试
+└── e2e/               # Playwright E2E/RPA 测试
 ```
 
 ## 质量标准
 
-- Dev：代码必须通过 ESLint；公开组件需有 Props 类型定义；禁止使用 Server Actions，所有数据交互通过 API Routes 完成；只在逻辑不明显处加简单行注释，禁止 JSDoc 等格式化注释
-- QA：单元测试覆盖率 > 80%，必须包含边界用例
+- Dev：代码必须通过 ESLint；公开组件需有 Props 类型定义；禁止使用 Server Actions，所有数据交互通过 API Routes 完成；只在逻辑不明显处加简单行注释，禁止 JSDoc 等格式化注释；所有可交互元素必须添加 `data-testid` 属性，便于 E2E 测试定位
+- QA：单元测试覆盖率 > 80%，必须包含边界用例；每个用户可见的功能流程必须有对应的 Playwright E2E 测试
 - PM：需求文档必须包含用户故事、验收标准、优先级
