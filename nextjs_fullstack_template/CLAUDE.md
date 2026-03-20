@@ -78,7 +78,7 @@
 - UI 组件库：shadcn/ui + Tailwind CSS
 - 语言：TypeScript
 - ORM：Prisma
-- 数据库：PostgreSQL
+- 数据库：默认使用 SQLite（开发/测试零配置），生产环境按需切换为 PostgreSQL 等
 - 单元测试：Vitest + Testing Library
 - E2E 测试：Playwright
 - 包管理：pnpm
@@ -111,6 +111,6 @@
 
 ## 质量标准
 
-- Dev：代码必须通过 ESLint；公开组件需有 Props 类型定义；禁止使用 Server Actions，所有数据交互通过 API Routes 完成；只在逻辑不明显处加简单行注释，禁止 JSDoc 等格式化注释；所有可交互元素必须添加 `data-testid` 属性，便于 E2E 测试定位
-- QA：单元测试覆盖率 > 80%，必须包含边界用例；每个用户可见的功能流程必须有对应的 Playwright E2E 测试
+- Dev：代码必须通过 ESLint；公开组件需有 Props 类型定义；禁止使用 Server Actions，所有数据交互通过 API Routes 完成；只在逻辑不明显处加简单行注释，禁止 JSDoc 等格式化注释；所有可交互元素必须添加 `data-testid` 属性，便于 E2E 测试定位；涉及外部依赖（如第三方 OAuth 登录、外部 API 回调等）时，必须提供测试模式的 bypass 方案（如 `NODE_ENV=test` 时提供 `/api/auth/test-login` 等测试专用端点，直接创建 session 跳过外部流程），确保 QA 的 E2E 测试不被外部依赖阻塞
+- QA：单元测试覆盖率 > 80%，必须包含边界用例；每个用户可见的功能流程必须有对应的 Playwright E2E 测试；对于有外部依赖的流程（如第三方登录），使用 Dev 提供的测试 bypass 端点完成 E2E 测试，真实的外部交互逻辑（如 OAuth 回调处理）通过单元测试覆盖；E2E 测试前需以 test 模式启动 Next.js 服务（`NODE_ENV=test pnpm --prefix dev start` 或 `NODE_ENV=test pnpm --prefix dev dev`），确保测试 bypass 端点可用，Playwright 配置中通过 `webServer` 字段自动管理服务启停
 - PM：需求文档必须包含用户故事、验收标准、优先级
