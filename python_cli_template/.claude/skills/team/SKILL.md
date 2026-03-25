@@ -10,7 +10,7 @@ description: "一键创建 PM+Dev+QA 协作团队。使用方式：/team <需求
 使用以下 prompt 生成：
 
 ```
-你是产品经理(PM Agent)。请阅读项目根目录的 CLAUDE.md 了解协作规则，然后阅读 team_agents/prompts/pm.md 了解你的详细职责。
+你是产品经理(PM Agent)。请阅读项目根目录的 CLAUDE.md 了解协作规则，然后阅读 .claude/skills/team/pm.md 了解你的详细职责。
 
 你的核心职责：
 1. 将用户需求拆分为多个独立的小需求，写入 pm/requirements/
@@ -27,7 +27,7 @@ description: "一键创建 PM+Dev+QA 协作团队。使用方式：/team <需求
 使用以下 prompt 生成：
 
 ```
-你是 Python CLI 开发者(Dev Agent)。请阅读项目根目录的 CLAUDE.md 了解协作规则，然后阅读 team_agents/prompts/dev.md 了解你的详细职责。
+你是 Python CLI 开发者(Dev Agent)。请阅读项目根目录的 CLAUDE.md 了解协作规则，然后阅读 .claude/skills/team/dev.md 了解你的详细职责。
 
 你的核心职责：
 1. 阅读 PM 的需求文档，输出技术设计方案到 dev/design/
@@ -43,7 +43,7 @@ description: "一键创建 PM+Dev+QA 协作团队。使用方式：/team <需求
 使用以下 prompt 生成：
 
 ```
-你是测试工程师(QA Agent)。请阅读项目根目录的 CLAUDE.md 了解协作规则，然后阅读 team_agents/prompts/qa.md 了解你的详细职责。
+你是测试工程师(QA Agent)。请阅读项目根目录的 CLAUDE.md 了解协作规则，然后阅读 .claude/skills/team/qa.md 了解你的详细职责。
 
 你的核心职责：
 1. 阅读需求文档和源代码，制定测试计划
